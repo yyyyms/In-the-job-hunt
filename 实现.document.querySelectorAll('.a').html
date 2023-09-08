@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="a test" id="app">
+        <div class="test"></div>
+        <div class="test1">
+            <div class="a">123</div>
+        </div>
+        <div class="test2">
+            <div class="b">
+                <div class="a">456</div>
+            </div>
+        </div>
+    </div>
+    <div id="test"></div>
+    <script>
+        let resDoms = []
+        let root = document.querySelector('#app')
+        // let root1 = document.getElementById('test')
+        console.log(root.childNodes);
+        console.log(root.children);
+        function isaClass(node) {
+            return node.classList.contains('a')
+        }
+        //dfs
+        function dfs(node) {
+            isaClass(node) && resDoms.push(node)
+            if (node.children.length > 0) {
+                let childarr = Array.from(node.children)
+                for (let i = 0; i < childarr.length; i++) {
+                    const element = childarr[i];
+                    dfs(element)
+                }
+            }
+        }
+        // dfs(root)
+        // console.log(resDoms);
+        //bfs 利用队列
+        function addchild(queue, children) {
+            let arr = [...children]
+            for (let i = 0; i < arr.length; i++) {
+                const element = arr[i];
+                queue.push(element)
+            }
+        }
+        function bfs(root) {
+            let resDoms = []
+            let queue = [root]
+            while (queue.length) {
+                let node = queue.shift()
+                isaClass(node) && resDoms.push(node)
+                node.children.length && addchild(queue, node.children)
+            }
+            return resDoms
+        }
+        // console.log(bfs(root));
+    </script>
+</body>
+
+</html>

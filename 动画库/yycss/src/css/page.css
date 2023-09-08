@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+}
+h2 {
+    color: #351c75;
+}
+h1 {
+    color: #351c75;
+    font-size: 64px;
+    font-weight:bolder;
+    line-height: 1.35;
+    text-shadow: 1px 1px 1px #351c75;
+    /* transform:scaleY(0.9) */
+}
+.container {
+    height: 100vh;
+    display: flex;
+}
+.left {
+    flex-basis: 250px;
+    background-color: #F7D7B5;
+    padding: 20px;
+    overflow: auto;
+    margin-bottom: 50px;
+}
+.left::-webkit-scrollbar {
+    width: 5px; /* 设置滚动条的宽度 */
+  }
+
+.right {
+    flex-grow: 1;
+    background-color: #FCE5CD;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.git {
+    width: 120px;
+    height: 120px;
+    background-color: #181717;
+    clip-path: polygon(0 0,100% 0,100% 100%);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.document {
+    height: 600px;
+    position: relative;
+}
+ .title {
+
+    height: 50px;
+    background-color: #351C75;
+    position: absolute;
+    width: 100%;
+    top: -50px;
+}
+.title h2 {
+    color: #e69138;
+    padding: 10px;
+    padding-left: 20px;
+}
+.rightTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+.YYY-ani {
+position: relative;
+z-index: 1000;
+}
+.leftTop {
+    margin-top: 100px;
+}
+
+option {
+    cursor: pointer;
+}
+optgroup {
+    margin-bottom: 30px;
+}

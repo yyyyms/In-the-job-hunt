@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b页面</title>
+</head>
+
+<body>
+    <script>
+        // 注册Service Worker
+        navigator.serviceWorker.register('serviceWork.js')
+            .then(function (registration) {
+                console.log('Service Worker 注册成功:', registration);
+
+                // // 向Service Worker发送消息
+                // navigator.serviceWorker.controller.postMessage('Hello 页面a!');
+            })
+            .catch(function (error) {
+                console.log('Service Worker 注册失败:', error);
+            });
+
+        // 监听来自Service Worker的消息
+        navigator.serviceWorker.addEventListener('message', function (event) {
+            console.log('收到来自Service Worker的消息:', event.data);
+        });
+
+
+        // const bc = new BroadcastChannel('test')
+        // bc.onmessage = function (e) {
+        //     console.log(e);
+        //     const data = e.data
+        //     console.log(e.data);
+        //     bc.postMessage('收到了')
+        // }
+
+    </script>
+</body>
+
+</html>

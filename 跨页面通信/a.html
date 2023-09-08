@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a页面</title>
+</head>
+
+<body>
+    <input id="input" type="text">
+    <button id="button">点击向其他同源页面发送信息</button>
+    <script>
+        console.log(window.location.search);
+        // let params = {}
+        // window.location.search.slice(1).split('&').forEach((element) => {
+        //     let arr = element.split('=')
+        //     params[arr[0]] = arr[1]
+        // })
+        const params = {};
+        const regex = /[?&]([^=#]+)=([^&#]*)/g;
+        let match;
+        while ((match = regex.exec(url))) {
+            const paramName = decodeURIComponent(match[1]);
+            const paramValue = decodeURIComponent(match[2]);
+            params[paramName] = paramValue;
+        }
+        console.log(params);
+
+        // 注册Service Worker
+        navigator.serviceWorker.register('serviceWork.js')
+            .then(function (registration) {
+                console.log('Service Worker 注册成功:', registration);
+                // setInterval(() => {
+                //     console.log(navigator.serviceWorker);
+                //     navigator.serviceWorker.controller.postMessage('Hello 页面b!');
+                // }, 2000);
+                // 向Service Worker发送消息
+
+            })
+            .catch(function (error) {
+                console.log('Service Worker 注册失败:', error);
+            });
+
+        // 监听来自Service Worker的消息
+        navigator.serviceWorker.addEventListener('message', function (event) {
+            console.log('收到来自Service Worker的消息:', event.data);
+        });
+
+
+
+
+        // const bc = new BroadcastChannel('test')
+        const input = document.querySelector('#input')
+        const button = document.querySelector('#button')
+        // button.addEventListener('click', function (e) {
+        //     e.preventDefault()
+        //     let msg = input.value
+        //     bc.postMessage(msg)
+        // })
+        // bc.onmessage = function (e) {
+        //     console.log(e.data);
+        // }
+    </script>
+</body>
+
+</html>
