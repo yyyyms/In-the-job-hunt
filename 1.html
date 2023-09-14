@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        {
+            let obj = {
+                id: 0,
+                children: [
+                    {
+                        id: 1,
+                        children: [
+                            {
+                                id: 11,
+                                children: [
+                                    {
+                                        id: 111,
+                                    },
+                                    {
+                                        id: 222,
+                                    },
+                                ],
+                            },
+                            {
+                                id: 12,
+                                children: [
+                                    {
+                                        id: 121,
+                                    },
+                                    {
+                                        id: 122,
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        id: 2,
+                        children: [
+                            {
+                                id: 21,
+                                children: [
+                                    {
+                                        id: 211,
+                                    },
+                                    {
+                                        id: 212,
+                                    },
+                                ],
+                            },
+                            {
+                                id: 22,
+                                children: [
+                                    {
+                                        id: 221,
+                                    },
+                                    {
+                                        id: 222,
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        id: 3,
+                    },
+                ],
+            };
+            function test1(obj, str) {
+                let use = str.split(",");
+                //判断是不是目标子串
+                function is(id) {
+                    id = id.toString();
+                    let Is = false;
+                    for (let i = 0; i < use.length; i++) {
+                        const element = "0" + use[i];
+                        let reg = new RegExp(id);
+                        if (element.match(reg)) {
+                            Is = true;
+                        }
+                    }
+                    return Is;
+                }
+                // for (let i = 0; i < use.length; i++) {
+                //     let str = '0' + use[i]
+                // }
+                function dfs(obj) {
+                    if (obj.children) {
+                        for (let i = 0; i < obj.children.length; i++) {
+                            if (!obj.children[i].children) {
+                                delete obj.children[i];
+                            } else {
+                                if (!is(obj.children[i].id)) {
+                                    delete obj.children[i];
+                                } else {
+                                    dfs(obj.children[i]);
+                                }
+
+                            }
+
+                        }
+                    }
+                    return
+                }
+                dfs(obj);
+                let reg = /null/g
+                return obj
+            }
+            console.log(test1(obj, "11,22,3"));
+        }
+    </script>
+</body>
+
+</html>
