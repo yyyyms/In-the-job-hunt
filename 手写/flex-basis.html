@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            /* display: flex; */
+            height: 100px;
+            width: 500px;
+            position: absolute;
+        }
+
+        .container1 {
+            z-index: 2;
+        }
+
+        .container2 {
+            z-index: 1;
+            left: 100px;
+        }
+
+
+        .item {
+            position: relative;
+            height: 100%;
+        }
+
+        .item1 {
+            z-index: 999;
+            background-color: aquamarine;
+        }
+
+        .item2 {
+            z-index: 1;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container container1">
+        <div class="item item1"></div>
+    </div>
+    <div class="container container2">
+        <div class="item item2"></div>
+    </div>
+</body>
+
+</html>

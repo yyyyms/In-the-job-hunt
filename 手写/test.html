@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        /* .test {
+            position: relative;
+            background-color: #a22222;
+            margin-left: 50px;
+            margin-right: 50px;
+            padding-bottom: calc(75%-100px);
+        }
+
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+        } */
+        .content {
+            font-size: 5px;
+            color: black;
+        }
+
+        .test {
+            display: flex;
+
+        }
+    </style> -->
+    <style>
+        /* .test {
+            width: 100px;
+            height: 100px;
+            transition: all 1s;
+            background-color: pink;
+            border: 3px solid black;
+            margin: 20px;
+            padding: 20px;
+        } */
+
+        /* .test:hover {
+            transform: translateX(200px);
+        } */
+        /* .test {} */
+    </style>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script>
+        // window.onload = function (params) {
+        //     console.log('onload');
+        // }
+        // document.addEventListener("DOMContentLoaded", (event) => {
+        //     console.log("DOM 完全加载和解析");
+        // });
+        // throw Error(66)
+        // var a;
+        // console.log(a);
+
+        // "use strict"
+        // console.log(this);
+        // var name = 1
+        // var obj = {
+        //     name: 2,
+        //     getName: function () {
+        //         console.log(this)
+        //     }
+        // }
+        // let fn = obj.getName
+        // fn()
+        // let obj1 = {
+        //     name: 3,
+        //     a: function test(params) {
+        //         setTimeout(() => {
+        //             console.log(this.name);
+        //         }, 0);
+        //     }
+        // }
+        // obj1.a()
+
+
+    </script>
+    <!-- <script defer src="./error.js"></script> -->
+    <script>
+        // let obj = {
+        //     a: 1,
+        //     // b: function (params) {
+        //     //     console.log("b");
+        //     // },
+        //     c: new Date(),
+        //     d: /\d/g,
+        //     e: undefined,
+        //     f: null,
+
+        // };
+        // obj.self = obj
+        // // console.log(structuredClone(obj));
+        // const str = new String("foo");
+        // console.log();
+    </script>
+    <!-- <div class="test">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="">4</div>
+        <div>5</div>
+    </div> -->
+
+    <!-- <script>
+        const obj = {
+            a: function () {
+                console.log(this);
+                window.setTimeout(() => {
+                    console.log(this);
+                }, 1000);
+            }
+        }
+
+        obj.a.call(obj);
+    </script> -->
+    <!-- <button id="test">点击</button> -->
+    <div class="father">
+        <div class="test">
+            666
+        </div>
+    </div>
+
+    <script>
+        // console.log(Array.prototype)
+        // let father = document.querySelector('.father')
+        // father.addEventListener('click', (e) => {
+        //     console.log(e.currentTarget);
+        //     console.log(e.target);
+        // })
+        // window.addEventListener('load', (e) => {
+        //     let timing = performance.getEntriesByType('navigation')[0]
+        //     let tti = timing.domInteractive - timing.fetchStart
+        //     console.log(timing);
+        //     console.log(timing.domainLookupEnd - timing.domainLookupStart);
+        // })
+        // let arr = {}
+        // arr.__proto__.a = function name(params) {
+        //     console.log(123);
+        // }
+        // for (const key in arr) {
+        //     console.log(key);
+        // }
+        // console.log(arr.__proto__);
+    </script>
+    <script>
+        // var name = 'outer'
+        // function fn(params) {
+        //     let name = 'k'
+        //     let innerObj = {
+        //         fn: function (params) {
+        //             console.log(this.name);
+        //             console.log(name);
+        //         }
+        //     }
+        //     return innerObj
+        // }
+        // let o = fn()
+        // // o.fn()
+        // let fn1 = o.fn
+        // fn1()
+        // window.d = 200
+        // window.d = 200
+        // var d = 100
+        // function fn() {
+        //     console.log(d);
+        // }
+        // fn()
+        // d = 400
+        // fn()
+        // console.log(d);
+        // let a = new String('A')
+        // switch (a) {
+        //     case 'A':
+        //         console.log(11);
+        //         break;
+        //     case 'B':
+        //         console.log(22);
+        //     default:
+        //         console.log(33);
+        //         break;
+        // }
+    </script>
+    <script>
+        const currentArray = [
+            { id: "01", name: "张大大", pid: "", job: "项目经理" },
+            { id: "02", name: "小亮", pid: "01", job: "产品leader" },
+            { id: "03", name: "小美", pid: "01", job: "UIleader" },
+            { id: "04", name: "老马", pid: "01", job: "技术leader" },
+            { id: "05", name: "老王", pid: "01", job: "测试leader" },
+            { id: "06", name: "老李", pid: "01", job: "运维leader" },
+            { id: "07", name: "小丽", pid: "02", job: "产品经理" },
+            { id: "08", name: "大光", pid: "02", job: "产品经理" },
+            { id: "09", name: "小高", pid: "03", job: "UI设计师" },
+            { id: "10", name: "小刘", pid: "04", job: "前端工程师" },
+            { id: "11", name: "小华", pid: "04", job: "后端工程师" },
+            { id: "12", name: "小李", pid: "04", job: "后端工程师" },
+            { id: "13", name: "小赵", pid: "05", job: "测试工程师" },
+            { id: "14", name: "小强", pid: "05", job: "测试工程师" },
+            { id: "15", name: "小涛", pid: "06", job: "运维工程师" },
+        ];
+        function arrToTree(arr, pid) {
+            // return arr.reduce((pre, cur) => {
+            //     if (cur.pid === pid) {
+            //         pre.push(cur);
+            //         let child = arrToTree(arr, cur.id)
+            //         if (child) {
+            //             cur.child = child
+            //         }
+            //     }
+            //     return pre
+            // }, [])
+            let obj = {}
+            let root = null
+            let list = JSON.parse(JSON.stringify(arr))
+            while (list.length) {
+                // debugger
+                let item = list.shift()
+                if (!obj[item.id]) {
+                    obj[item.id] = item
+                }
+                if (item.pid == '' && root == null) {
+                    root = item
+                    continue;
+                }
+                if (obj[item.pid] !== null) {
+                    // console.log(123);
+                    // console.log(obj[item.pid]);
+                    obj[item.pid].child = obj[item.pid].child ? [...obj[item.pid].child, item] : [item]
+                } else {
+                    list.push(item)
+                }
+            }
+            return root
+        }
+        console.log(arrToTree(currentArray, ""));
+    </script>
+</body>
+
+</html>

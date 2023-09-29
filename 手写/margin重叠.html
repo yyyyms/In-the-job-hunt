@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .test1 {
+            height: 100px;
+            width: 100px;
+            /* margin-top: 1000px; */
+            background-color: aqua;
+            position: absolute;
+            top: 1000px;
+            /* bottom: -500px; */
+            left: 50%;
+            margin-bottom: 500px;
+            /* padding-left: 20px; */
+            border: 4px solid blue;
+            box-sizing: border-box;
+        }
+
+        .father {
+            height: 5000px;
+            width: 500px;
+            background-color: blanchedalmond;
+            /* box-sizing: border-box; */
+            position: relative;
+            /* top: 1000px; */
+            border: 3px solid blue;
+            overflow: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="test1"></div>
+    </div>
+    <script>
+        // var test1 = document.getElementsByClassName("father")[0];
+        // var test2 = document.getElementsByClassName("test1")[0];
+        // window.addEventListener('scroll', () => {
+        //     let offsetH = test2.offsetTop
+        //     let h = test2.clientHeight
+        //     let scrollTop = window.scrollTop ? window.scrollTop : document.documentElement.scrollTop
+        //     let clientHegith = document.documentElement.clientHeight;
+        //     console.log(scrollTop, clientHegith);
+        //     if (offsetH < (scrollTop + clientHegith) && (offsetH + h) > scrollTop) {
+        //         console.log('出现了');
+        //     }
+        //     // const { height, width, left, right, top, bottom } = test2.getBoundingClientRect()
+        //     // console.log(bottom, clientHegith);
+        // })
+    </script>
+    <script>
+        var length = 10;
+        function fn() {
+            console.log(this.length);
+        }
+
+        var obj = {
+            length: 5,
+            method: function (fn) {
+                fn();
+                arguments[0]();
+            }
+        }
+        obj.method(fn, 1);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="upload" type="file">
+    <script>
+        document.getElementById("upload").addEventListener("change", function (e) {
+            let files = e.target.files;
+            console.log(files[0]);
+            let reader = new FileReader()
+            reader.onload = function (e) {
+                const base64 = e.target.result
+                cb(base64)
+            }
+            reader.readAsDataURL(files[0])
+        })
+        function cb(base64) {
+            const image = new Image()
+            image.src = base64
+            image.onload = function (e) {
+                const canvas = document.createElement('canvas')
+                const ctx = canvas.getContext('2d')
+                let w = image.naturalWidth
+                let h = image.naturalHeight
+                canvas.width = w
+                canvas.height = h
+                //讲图片添加到画布中
+                ctx.drawImage(image, 0, 0, w, h)
+                const compressImage = canvas.toDataURL('image/png', 0.8)
+                console.log(compressImage);
+            }
+        }
+    </script>
+</body>
+
+</html>

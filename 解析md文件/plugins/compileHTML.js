@@ -1,7 +1,10 @@
+const { resolve } = require("path");
 const reg_mark = /^(.+?)\s/; //匹配 '# 这是一个 h1 的标题' 中的 #标识
 const reg_sharp = /^\#/;
 const reg_crossbar = /^\-/; //匹配 -
 const reg_numer = /^\d\./; //匹配1. 2.
+const reg_img = /^!\[.+\]\((.+)\)/; //匹配图片
+const basePath = "D:/我爱代码/md";
 const { random } = require("./utils");
 /**
  * 
@@ -29,14 +32,15 @@ const { random } = require("./utils");
 }
  */
 function compileHTML(_mdArr) {
-  const _htmlPool = createTree(_mdArr);
-  //   console.log(_htmlPool);
+  const { _htmlPool, _imgs } = createTree(_mdArr);
+  // console.log(_htmlPool);
   let _htmlStr = "";
   let item;
   for (const key in _htmlPool) {
     item = _htmlPool[key];
     // console.log(item);
     if (item.type === "single") {
+      // console.log(item.tags[0]);
       _htmlStr = _htmlStr + item.tags[0];
     } else if (item.type == "wrap") {
       let _list = "";
@@ -48,13 +52,15 @@ function compileHTML(_mdArr) {
       _htmlStr += `</${key.split("-")[0]}>`;
     }
   }
-  //   console.log(_htmlStr);
-  return _htmlStr;
+  // console.log(_htmlStr);
+  return { _htmlStr, _imgs };
 }
 function createTree(mdArr) {
+  let _imgs = []; //暂存图片路径
   let _lastMark = "";
   let _htmlPool = {}; //定义树形结构方便生成html结构
   let _key = 0;
+  // console.log(mdArr);
   mdArr.forEach((mdFragment) => {
     const matched = mdFragment.match(reg_mark);
     if (matched) {
@@ -107,8 +113,25 @@ function createTree(mdArr) {
         }
       }
     }
+    //处理图片
+    if (reg_img.test(mdFragment)) {
+      const match = mdFragment.match(reg_img);
+      let path = match[1];
+      let url = path.split("/")[1];
+      _imgs.push(resolve(basePath, path));
+      // console.log();
+      let tag = `<img src="./imgs/${url}" alt="">`;
+      _htmlPool[`img-${random()}`] = {
+        type: "single",
+        tags: [tag],
+      };
+    }
   });
-  return _htmlPool;
+  // console.log(_htmlPool);
+  return {
+    _htmlPool,
+    _imgs,
+  };
 }
 module.exports = {
   compileHTML,
